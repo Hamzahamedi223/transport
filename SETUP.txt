@@ -1,0 +1,73 @@
+Zaouali Transport - Supabase setup
+==================================
+
+1. Run:
+   composer install
+
+   Requirements:
+   - PHP 8.1+ with pdo_pgsql enabled
+   - Composer
+
+   Laragon is not required. You can use standalone PHP, XAMPP, WAMP, Docker,
+   shared hosting, or any server that can run PHP and point the web root to
+   /public.
+
+2. In Supabase, open SQL Editor and run:
+   database/supabase.sql
+
+3. Update .env with your Supabase database settings:
+   DB_HOST=db.YOUR_PROJECT_REF.supabase.co
+   DB_PORT=5432
+   DB_NAME=postgres
+   DB_USER=postgres
+   DB_PASSWORD=YOUR_SUPABASE_DATABASE_PASSWORD
+   DB_SSLMODE=require
+   DB_EMULATE_PREPARES=false
+
+   Or use DATABASE_URL instead:
+   DATABASE_URL=postgresql://postgres:YOUR_SUPABASE_DATABASE_PASSWORD@db.YOUR_PROJECT_REF.supabase.co:5432/postgres
+
+   If your machine or host is IPv4-only, use Supabase Dashboard > Connect >
+   Session Pooler instead:
+   DB_HOST=aws-REGION.pooler.supabase.com
+   DB_PORT=5432
+   DB_NAME=postgres
+   DB_USER=postgres.YOUR_PROJECT_REF
+   DB_PASSWORD=YOUR_SUPABASE_DATABASE_PASSWORD
+   DB_SSLMODE=require
+
+   Avoid Transaction Pooler port 6543 unless you set DB_EMULATE_PREPARES=true.
+
+4. Test the connection locally:
+   php scripts/check-supabase.php
+
+5. Start a local PHP server:
+   php -S localhost:8000 -t public public/dev-router.php
+
+6. Deploy the app with the web root pointing to /public.
+
+Vercel deploy
+-------------
+
+Vercel does not run PHP as an official zero-config runtime, but this project can
+deploy there using the community vercel-php runtime configured in vercel.json.
+
+Set these Environment Variables in Vercel Project Settings before deploying:
+  DB_CONNECTION=pgsql
+  DB_HOST=aws-REGION.pooler.supabase.com
+  DB_PORT=5432
+  DB_NAME=postgres
+  DB_USER=postgres.YOUR_PROJECT_REF
+  DB_PASSWORD=your-current-or-rotated-password
+  DB_SSLMODE=require
+  DB_EMULATE_PREPARES=false
+  ADMIN_USERNAME=nasreddine
+  ADMIN_PASSWORD_HASH=your-admin-password-hash
+  APP_KEY=any-long-random-secret
+  WHATSAPP_NUMBER=21652292078
+  CONTACT_PHONE_DISPLAY=52 292 078
+  MESSENGER_USERNAME=nasreddin.zaouali
+
+WhatsApp number and displayed phone are set in .env:
+  WHATSAPP_NUMBER=21652292078
+  CONTACT_PHONE_DISPLAY=52 292 078

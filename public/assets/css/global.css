@@ -1,0 +1,238 @@
+/* ==========================================================
+   Zaouali Transport — global design system
+   Palette sampled directly from the truck livery photo
+   (navy → sky-blue diagonal banner) + white + near-black.
+   Fonts follow the BoussoleV3 convention: Montserrat + Inter.
+   ========================================================== */
+
+:root {
+  /* Blues — sampled from van-banner-source.jpeg */
+  --c-navy-900:   #071b3d;   /* deepest — footer / dark sections */
+  --c-navy-800:   #0e3475;   /* sampled dark stripe */
+  --c-blue-700:   #174e87;   /* sampled mid stripe */
+  --c-blue-600:   #1c62a8;   /* interpolated */
+  --c-blue-500:   #1999e2;   /* sampled bright accent — PRIMARY */
+  --c-blue-400:   #35b0ee;   /* lighter accent */
+  --c-blue-100:   #eaf6ff;   /* very light tint — section bg */
+
+  --c-black:      #0a0e14;
+  --c-ink:        #10151f;   /* body text */
+  --c-ink-dim:    rgba(16,21,31,0.62);
+  --c-white:      #ffffff;
+  --c-off-white:  #f4f8fb;
+  --c-border:     rgba(16,52,117,0.14);
+
+  --c-whatsapp:   #25D366;
+
+  /* Fonts — same family as BoussoleV3 */
+  --f-heading: 'Montserrat', Arial, sans-serif;
+  --f-body:    'Inter', Arial, sans-serif;
+
+  --r-pill: 999px;
+  --r-card: 20px;
+  --r-card-sm: 14px;
+
+  --shadow-soft: 0 20px 60px rgba(7,27,61,0.10);
+  --shadow-lift: 0 30px 80px rgba(7,27,61,0.18);
+  --grad-brand: linear-gradient(120deg, var(--c-navy-800) 0%, var(--c-blue-600) 45%, var(--c-blue-500) 75%, var(--c-blue-400) 100%);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--c-white);
+  color: var(--c-ink);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+input, select, textarea { max-width: 100%; }
+
+h1, h2, h3, h4 {
+  font-family: var(--f-heading);
+  font-weight: 800;
+  margin: 0 0 16px;
+  color: var(--c-black);
+  line-height: 1.15;
+}
+
+p { margin: 0 0 16px; color: var(--c-ink-dim); }
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section { padding: 100px 0; position: relative; }
+.section-tight { padding: 64px 0; }
+.section-alt { background: var(--c-off-white); }
+
+.section-head { text-align: center; max-width: 680px; margin: 0 auto 56px; }
+.section-head h2 { font-size: clamp(28px, 4vw, 42px); }
+.section-head .subtitle { color: var(--c-ink-dim); font-size: 17px; }
+
+/* ---------- eyebrow pill ---------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid var(--c-blue-500);
+  border-radius: var(--r-pill);
+  padding: 8px 20px;
+  font-family: var(--f-heading);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--c-blue-700);
+  background: var(--c-blue-100);
+  margin-bottom: 18px;
+}
+
+/* ---------- icon badges ---------- */
+.icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--c-blue-100);
+  color: var(--c-blue-600);
+  flex-shrink: 0;
+}
+.icon-badge svg { width: 28px; height: 28px; }
+.icon-badge.solid {
+  background: var(--grad-brand);
+  color: var(--c-white);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--f-heading);
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  border-radius: var(--r-pill);
+  padding: 16px 32px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all .22s ease;
+  text-align: center;
+  white-space: nowrap;
+}
+.btn svg { width: 20px; height: 20px; }
+
+.btn-primary {
+  background: var(--grad-brand);
+  color: var(--c-white);
+  box-shadow: 0 14px 30px rgba(25,153,226,0.35);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 36px rgba(25,153,226,0.45); }
+
+.btn-whatsapp {
+  background: var(--c-whatsapp);
+  color: var(--c-white);
+  box-shadow: 0 14px 30px rgba(37,211,102,0.32);
+}
+.btn-whatsapp:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
+.btn-messenger {
+  background: linear-gradient(135deg, #00B2FF, #006AFF);
+  color: var(--c-white);
+  box-shadow: 0 14px 30px rgba(0,106,255,0.32);
+}
+.btn-messenger:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
+.btn-outline {
+  background: transparent;
+  border-color: rgba(255,255,255,0.55);
+  color: var(--c-white);
+}
+.btn-outline:hover { background: rgba(255,255,255,0.12); border-color: var(--c-white); }
+
+.btn-outline-dark {
+  background: transparent;
+  border-color: var(--c-border);
+  color: var(--c-navy-800);
+}
+.btn-outline-dark:hover { background: var(--c-blue-100); border-color: var(--c-blue-500); }
+
+.btn-block { width: 100%; }
+.btn-lg { padding: 19px 40px; font-size: 15.5px; }
+
+/* ---------- cards ---------- */
+.card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-soft);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+
+/* ---------- badges / chips ---------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-navy-800);
+  background: var(--c-blue-100);
+  border-radius: var(--r-pill);
+  padding: 6px 14px;
+}
+.chip svg { width: 15px; height: 15px; }
+
+::selection { background: var(--c-blue-500); color: var(--c-white); }
+
+@media (max-width: 720px) {
+  body { font-size: 15px; line-height: 1.6; }
+  .container { padding: 0 18px; }
+  .section { padding: 64px 0; }
+  .section-tight { padding: 46px 0; }
+  .section-head { margin-bottom: 34px; }
+  .section-head .subtitle { font-size: 15.5px; }
+  .eyebrow { padding: 7px 14px; font-size: 11.5px; letter-spacing: 1px; }
+  .btn { width: 100%; padding: 14px 20px; white-space: normal; }
+  .btn-lg { padding: 15px 22px; font-size: 14.5px; }
+  .card { border-radius: var(--r-card-sm); }
+  .icon-badge { width: 48px; height: 48px; border-radius: 14px; }
+}
+
+@media (max-width: 420px) {
+  .container { padding: 0 14px; }
+  .section { padding: 54px 0; }
+  h1, h2, h3, h4 { overflow-wrap: anywhere; }
+}
+
+/* ================= RTL (Tunisian Arabic) ================= */
+html[dir="rtl"] body,
+html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3, html[dir="rtl"] h4,
+html[dir="rtl"] .btn, html[dir="rtl"] .eyebrow, html[dir="rtl"] .chip {
+  font-family: 'Cairo', Arial, sans-serif;
+}
+html[dir="rtl"] .hero-media .float-card { left: auto; right: -26px; }
+html[dir="rtl"] .how-step .icon-badge { right: auto; left: 24px; }
+html[dir="rtl"] .gallery-grid .g-tag { left: auto; right: 16px; }
+html[dir="rtl"] .about-media .badge-exp { right: auto; left: -20px; }
+html[dir="rtl"] .float-stack { right: auto; left: 24px; }
+@media (max-width: 980px) {
+  html[dir="rtl"] .hero-media .float-card { right: 16px; }
+}

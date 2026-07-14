@@ -1,0 +1,10 @@
+<?php include dirname(__DIR__) . '/partials/navbar.php'; ?>
+<?php include __DIR__ . '/hero.php'; ?>
+<?php include __DIR__ . '/services.php'; ?>
+<?php include __DIR__ . '/how.php'; ?>
+<?php include __DIR__ . '/trajet.php'; ?>
+<?php include __DIR__ . '/gallery.php'; ?>
+<?php include __DIR__ . '/about.php'; ?>
+<?php include __DIR__ . '/order.php'; ?>
+<?php include __DIR__ . '/faq.php'; ?>
+<?php include dirname(__DIR__) . '/partials/footer.php'; ?>
